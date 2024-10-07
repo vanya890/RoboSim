@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/!Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/BlocksEngine2/Scenes/BE2SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/BlocksEngine2_Horizontal/Scenes/HorizontalBE2SampleScene.unity
+    guid: 294291218165234658366afe54f7cb81
+  - enabled: 0
+    path: Assets/BlocksEngine2/Scenes/BE2MultipleTargetObjects.unity
+    guid: 0333588ed2034d28cbcc190ca5aeeb80
+  - enabled: 0
+    path: Assets/BlocksEngine2_SciFi/Scenes/ScifiBE2SampleScene.unity
+    guid: 28db5afba24f900ba844c731679c8717
   m_configObjects: {}
