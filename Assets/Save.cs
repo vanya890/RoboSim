@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
 using static UnityEngine.Rendering.DebugUI.Table;
 
@@ -75,10 +76,31 @@ public static class JsonHelper
 }
 public class Save : MonoBehaviour
 {
-    PrimitiveType[] index = new PrimitiveType[5] { PrimitiveType.Cube, PrimitiveType.Sphere, PrimitiveType.Plane, PrimitiveType.Capsule, PrimitiveType.Cylinder };
-    List<GameData> alldata = new List<GameData>();
+    PrimitiveType[] index = new PrimitiveType[4] { PrimitiveType.Cube, PrimitiveType.Sphere, PrimitiveType.Plane, PrimitiveType.Capsule};
+    
     public void SaveAll()
     {
+        List<GameData> alldata = new List<GameData>();
+        foreach (GameObject t in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            //0-Cube 1-Sphere 2-Plane 3-Capsule
+            if (t.GetComponent<BoxCollider>() != null)
+            {
+                alldata.Add(new GameData(0, t.transform.position, t.transform.rotation, t.transform.localScale, t.activeSelf));
+            }
+            else if (t.GetComponent<SphereCollider>() != null)
+            {
+                alldata.Add(new GameData(1, t.transform.position, t.transform.rotation, t.transform.localScale, t.activeSelf));
+            }
+            else if(t.GetComponent<MeshCollider>() != null)
+            {
+                alldata.Add(new GameData(2, t.transform.position, t.transform.rotation, t.transform.localScale, t.activeSelf));
+            }
+            else if (t.GetComponent<CapsuleCollider>() != null)
+            {
+                alldata.Add(new GameData(3, t.transform.position, t.transform.rotation, t.transform.localScale, t.activeSelf));
+            }
+        }
         string json = "";
         json = JsonHelper.ToJson<GameData>(alldata, true);
         File.WriteAllText(Application.persistentDataPath + "/Saves.json", json);
@@ -95,14 +117,15 @@ public class Save : MonoBehaviour
             result.SetActive(t.Active());
         }
     }
-    
-    private void Start()
+    void Update()
     {
-        foreach(GameObject t in SceneManager.GetActiveScene().GetRootGameObjects())
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            //0-Cube 1-Sphere 2-Plane 3-Capsule 4-Cylinder
-            alldata.Add(new GameData(Array.IndexOf(index,GetComponent<PrimitiveType>()), t.transform.position, t.transform.localRotation, t.transform.localPosition, t.activeSelf));
+            SaveAll();
         }
-        Load(Application.persistentDataPath + "/Saves.json");
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Load(Application.persistentDataPath + "/Saves.json");
+        }
     }
 }
