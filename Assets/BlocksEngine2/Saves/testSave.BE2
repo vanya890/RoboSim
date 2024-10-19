@@ -1,0 +1,166 @@
+<Block>
+  <blockName>Block Ins WhenPlayClicked</blockName>
+  <position>(165.5, -336.5, 0.0)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Ins MoveForward</blockName>
+          <position>(0.0, 10.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>1</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+        <Block>
+          <blockName>Block Ins RotateAxis</blockName>
+          <position>(0.0, -60.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>Y axis</value>
+                </Input>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>30</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+        <Block>
+          <blockName>Block Ins If</blockName>
+          <position>(0.0, -130.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks>
+                <Block>
+                  <blockName>Block Ins AddToList</blockName>
+                  <position>(20.0, 10.0, 0.0)</position>
+                  <varManagerName></varManagerName>
+                  <varName />
+                  <sections>
+                    <Section>
+                      <childBlocks />
+                      <inputs>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value></value>
+                        </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>List</value>
+                        </Input>
+                      </inputs>
+                    </Section>
+                  </sections>
+                </Block>
+              </childBlocks>
+              <inputs>
+                <Input>
+                  <isOperation>true</isOperation>
+                  <value />
+                  <operation>
+                    <Block>
+                      <blockName>Block Op JoystickKeyPressed</blockName>
+                      <position>(-131.8, 30.0, 0.0)</position>
+                      <varManagerName></varManagerName>
+                      <varName />
+                      <sections>
+                        <Section>
+                          <childBlocks />
+                          <inputs>
+                            <Input>
+                              <isOperation>false</isOperation>
+                              <value>Up</value>
+                            </Input>
+                          </inputs>
+                        </Section>
+                      </sections>
+                    </Block>
+                  </operation>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs />
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins SlideForward</blockName>
+  <position>(190.2, -943.8, 0.0)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs>
+        <Input>
+          <isOperation>true</isOperation>
+          <value />
+          <operation>
+            <Block>
+              <blockName>Block Op List</blockName>
+              <position>(-77.2, 30.0, 0.0)</position>
+              <varManagerName>MG_BlocksEngine2.Environment.BE2_VariablesListManager</varManagerName>
+              <varName>List</varName>
+              <sections>
+                <Section>
+                  <childBlocks />
+                  <inputs>
+                    <Input>
+                      <isOperation>false</isOperation>
+                      <value>List</value>
+                    </Input>
+                  </inputs>
+                </Section>
+              </sections>
+            </Block>
+          </operation>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Op JoystickKeyPressed</blockName>
+  <position>(398.5, -833.1, 0.0)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>Up</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+

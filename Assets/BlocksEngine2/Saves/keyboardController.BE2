@@ -1,0 +1,257 @@
+<Block>
+  <blockName>Block Ins WhenKeyPressed</blockName>
+  <position>(446.0, -254.5, 0.0)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Ins MoveForward</blockName>
+          <position>(0.0, 10.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>-0.2</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+        <Block>
+          <blockName>Block Ins Wait</blockName>
+          <position>(0.0, -60.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>0.01</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>S</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins WhenKeyPressed</blockName>
+  <position>(101.9, -243.9, 0.0)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Ins MoveForward</blockName>
+          <position>(0.0, 10.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>0.2</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+        <Block>
+          <blockName>Block Ins Wait</blockName>
+          <position>(0.0, -60.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>0.01</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>W</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins WhenKeyPressed</blockName>
+  <position>(332.2, -966.4, 0.0)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Ins RotateAxis</blockName>
+          <position>(0.0, 10.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>Y axis</value>
+                </Input>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>5</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+        <Block>
+          <blockName>Block Ins Wait</blockName>
+          <position>(0.0, -60.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>0.01</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>D</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins WhenKeyPressed</blockName>
+  <position>(377.2, -532.4, 0.0)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Ins ChangeColor</blockName>
+          <position>(0.0, 10.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>Random</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>UpArrow</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins WhenKeyPressed</blockName>
+  <position>(30.6, -667.7, 0.0)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Ins RotateAxis</blockName>
+          <position>(0.0, 10.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>Y axis</value>
+                </Input>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>-5</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+        <Block>
+          <blockName>Block Ins Wait</blockName>
+          <position>(0.0, -60.0, 0.0)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>0.01</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>A</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+
