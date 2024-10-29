@@ -2,21 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
 using static UnityEngine.Rendering.DebugUI.Table;
+using static UnityEngine.UI.Image;
 
 [System.Serializable]
 class GameData
 {
-    public int type;
+    public string type;
     public Vector3 position;
     public Quaternion rotation;
     public Vector3 scale;
     public bool active;
-    public GameData(int typ,Vector3 pos,Quaternion rot,Vector3 sca, bool act)
+    public GameData(string typ,Vector3 pos,Quaternion rot,Vector3 sca, bool act)
     {
         type = typ;
         position = pos;
@@ -24,7 +30,7 @@ class GameData
         scale = sca;
         active = act;
     }
-    public int Type()
+    public string Type()
     {
         return type;
     }
@@ -74,58 +80,57 @@ public static class JsonHelper
         public List<T> Items;
     }
 }
+#if UNITY_EDITOR
+[ExecuteInEditMode]
+#endif
+
 public class Save : MonoBehaviour
 {
-    PrimitiveType[] index = new PrimitiveType[4] { PrimitiveType.Cube, PrimitiveType.Sphere, PrimitiveType.Plane, PrimitiveType.Capsule};
-    
+    private void LoadPrefab(string prefabName, Vector3 position, Quaternion rotation, Vector3 scale, bool active)
+    {
+        var asset = Resources.Load<GameObject>(prefabName);
+        GameObject prefab = GameObject.Instantiate(asset);
+        prefab.transform.position = new Vector3(position.x, position.y, position.z);
+        prefab.transform.rotation = rotation;
+        prefab.transform.localScale = scale;
+        prefab.SetActive(active);
+    }
+    private void LoadLevel()
+    {
+        string path = Path.GetFullPath($"{Application.persistentDataPath}\\Saves.json");
+        StreamReader reader = new StreamReader(path);
+        string levelJson = reader.ReadToEnd();
+        List<GameData> data = JsonHelper.FromJson<GameData>(File.ReadAllText(path));
+        foreach (GameData b in data)
+        {
+            try
+            {
+                LoadPrefab(b.Type(), b.Position(), b.Rotation(), b.Scale(), b.Active());
+            }
+            catch { Debug.Log(b.Type()); }
+        }
+    }
     public void SaveAll()
     {
         List<GameData> alldata = new List<GameData>();
         foreach (GameObject t in SceneManager.GetActiveScene().GetRootGameObjects())
         {
-            //0-Cube 1-Sphere 2-Plane 3-Capsule
-            if (t.GetComponent<BoxCollider>() != null)
-            {
-                alldata.Add(new GameData(0, t.transform.position, t.transform.rotation, t.transform.localScale, t.activeSelf));
-            }
-            else if (t.GetComponent<SphereCollider>() != null)
-            {
-                alldata.Add(new GameData(1, t.transform.position, t.transform.rotation, t.transform.localScale, t.activeSelf));
-            }
-            else if(t.GetComponent<MeshCollider>() != null)
-            {
-                alldata.Add(new GameData(2, t.transform.position, t.transform.rotation, t.transform.localScale, t.activeSelf));
-            }
-            else if (t.GetComponent<CapsuleCollider>() != null)
-            {
-                alldata.Add(new GameData(3, t.transform.position, t.transform.rotation, t.transform.localScale, t.activeSelf));
-            }
+            alldata.Add(new GameData(t.name, t.transform.position, t.transform.rotation, t.transform.localScale, t.activeSelf));
         }
         string json = "";
         json = JsonHelper.ToJson<GameData>(alldata, true);
-        File.WriteAllText(Application.persistentDataPath + "/Saves.json", json);
+        File.WriteAllText(Application.persistentDataPath + "\\Saves.json", json);
         Debug.Log(json);
     }
-
-    public void Load(string path)
+    void OnGUI()
     {
-        foreach (GameData t in JsonHelper.FromJson<GameData>(File.ReadAllText(path)))
-        {
-            
-            GameObject result = GameObject.Instantiate(GameObject.CreatePrimitive(index[t.Type()]),t.position,t.Rotation());
-            result.transform.localScale = t.Scale();
-            result.SetActive(t.Active());
-        }
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (GUI.Button(new Rect(10, 10, 150, 100), "Save"))
         {
             SaveAll();
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (GUI.Button(new Rect(10, 10 + 100, 150, 100), "Load"))
         {
-            Load(Application.persistentDataPath + "/Saves.json");
+            LoadLevel();
         }
     }
 }
