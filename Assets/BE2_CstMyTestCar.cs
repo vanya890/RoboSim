@@ -5,7 +5,7 @@ using UnityEngine;
 using MG_BlocksEngine2.Block.Instruction;
 using MG_BlocksEngine2.Block;
 
-public class BE2_Cst_LookAtAndMove : BE2_InstructionBase, I_BE2_Instruction
+public class BE2_CstMyTestCar : BE2_InstructionBase, I_BE2_Instruction
 {
     public new bool ExecuteInUpdate => true;
 
@@ -25,6 +25,11 @@ public class BE2_Cst_LookAtAndMove : BE2_InstructionBase, I_BE2_Instruction
 
     public new void Function()
     {
+        if (_firstPlay)
+        {
+            TargetObject.Transform.GetComponent<CarControl>()._vInput = Section0Inputs[0].FloatValue;
+        }
+        /*
         if (_firstPlay)
         {
             _initialPosition = TargetObject.Transform.position;
@@ -57,24 +62,6 @@ public class BE2_Cst_LookAtAndMove : BE2_InstructionBase, I_BE2_Instruction
             _counter = 0;
             _timer = 0;
             _firstPlay = true;
-        }
-    }
-
-    Vector3 GetDirection(string option)
-    {
-        // returns the look direction based on the string value
-        switch (option)
-        {
-            case "Up":
-                return Vector3.forward;
-            case "Down":
-                return Vector3.back;
-            case "Right":
-                return Vector3.right;
-            case "Left":
-                return Vector3.left;
-            default:
-                return Vector3.zero;
-        }
+        }*/
     }
 }
